@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lyf.dao.UserDao">
+    <select id="findByName" resultType="user">
+        select * from tab_user where username = #{username}
+    </select>
+    <select id="findByUserName" parameterType="string" resultType="user">
+         select * from tab_user where username=#{username}
+    </select>
+    <insert id="save" parameterType="user" >
+        insert into tab_user values(null,#{username},
+        #{password},#{name},#{birthday},#{sex},#{telephone},#{email},#{status},#{code})
+    </insert>
+
+    <update id="updateStatus" parameterType="string">
+        update tab_user set status= "Y" where code =#{code}
+    </update>
+
+</mapper>
+
